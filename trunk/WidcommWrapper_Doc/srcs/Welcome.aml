@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="54690392-4334-4b53-8a01-6743ab1b22a5" revisionNumber="1">
+	<developerConceptualDocument
+		xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"
+		xmlns:xlink="http://www.w3.org/1999/xlink">
+		
+		<introduction>
+			<para>
+				This project is a opensource wrapper to allow developers to write applications using Widcomm Bluetooth stack with Microsoft .net languages.
+			</para>
+		</introduction>
+		
+		<section>
+			<title>Installation and usage steps:</title>
+			<content>
+				<para>Go to http://www.broadcom.com/support/bluetooth/sdk.php and download "BTW Development Kit for Windows PC Development Platform". This wrapper was tested with latest available version: 6.1.0.1506</para>
+				<para>Extract files from Bluetooth SDK archive and run setup.exe file.</para>
+				<para>Change WidcommWrapper project properties if required</para>
+				<para>- C/C++ => Additional Include Directories</para>
+				<para>- Linker => Additional Library Directories</para>
+			</content>
+		</section>
+		<section>
+			<title>Wrapper usage on a non developpement computer:</title>
+			<content>
+				<para>You must redistribute the applicable Microsoft libraries through the Microsoft Visual C++ 2008 Redistributable packages vcredist_x86.exe and/or vcredist_x64.exe</para>
+				<para>You must redistribute the appropriate btwapi.dll to target systems in %systemroot%\system32. Only redistribute btwapi.dll if it is not already present on the target system.</para>
+			</content>
+		</section>
+	</developerConceptualDocument>
+</topic>

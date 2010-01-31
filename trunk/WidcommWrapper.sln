@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WidcommWrapper", "WidcommWrapper\WidcommWrapper.vcproj", "{757D0AE3-8641-4054-931F-39F94365AD5E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WidcommWrapper_Test", "WidcommWrapper_Test\WidcommWrapper_Test.csproj", "{B952D074-D758-4690-87D3-D70902BF4486}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Debug|x64 = Debug|x64
+		Release|Win32 = Release|Win32
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{757D0AE3-8641-4054-931F-39F94365AD5E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{757D0AE3-8641-4054-931F-39F94365AD5E}.Debug|Win32.Build.0 = Debug|Win32
+		{757D0AE3-8641-4054-931F-39F94365AD5E}.Debug|x64.ActiveCfg = Debug|x64
+		{757D0AE3-8641-4054-931F-39F94365AD5E}.Debug|x64.Build.0 = Debug|x64
+		{757D0AE3-8641-4054-931F-39F94365AD5E}.Release|Win32.ActiveCfg = Release|Win32
+		{757D0AE3-8641-4054-931F-39F94365AD5E}.Release|Win32.Build.0 = Release|Win32
+		{757D0AE3-8641-4054-931F-39F94365AD5E}.Release|x64.ActiveCfg = Release|x64
+		{757D0AE3-8641-4054-931F-39F94365AD5E}.Release|x64.Build.0 = Release|x64
+		{B952D074-D758-4690-87D3-D70902BF4486}.Debug|Win32.ActiveCfg = Debug|x86
+		{B952D074-D758-4690-87D3-D70902BF4486}.Debug|Win32.Build.0 = Debug|x86
+		{B952D074-D758-4690-87D3-D70902BF4486}.Debug|x64.ActiveCfg = Debug|x64
+		{B952D074-D758-4690-87D3-D70902BF4486}.Debug|x64.Build.0 = Debug|x64
+		{B952D074-D758-4690-87D3-D70902BF4486}.Release|Win32.ActiveCfg = Release|x86
+		{B952D074-D758-4690-87D3-D70902BF4486}.Release|x64.ActiveCfg = Release|x64
+		{B952D074-D758-4690-87D3-D70902BF4486}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

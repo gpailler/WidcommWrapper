@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<topic id="E0036CA7-9BF2-4638-BD7F-CFF3869A0E06" revisionNumber="1">
+	<developerHowToDocument
+		xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" 
+		xmlns:xlink="http://www.w3.org/1999/xlink">
+		<title>Example</title>
+
+		<!--
+		<summary>
+			<para>
+			   Client sample
+			</para>
+		</summary>
+		-->
+		<introduction>
+			<para>
+				Bluetooth client sample
+			</para>
+		</introduction>
+
+		<procedure>
+			<title>Common steps for a typical client application:</title>
+			<steps class="ordered">
+				<step>1. Instantiate an object of CManagedBtIf class.</step>
+				<step>2. Use method CManagedBtIf.StartInquiry() to obtain a list of devices in the Bluetooth neighborhood.</step>
+				<step>3. Use the event CManagedBtIf.DeviceResponded to build a list of responding devices. Another event, CManagedBtIf.InquiryComplete, may optionally be used to determine when the inquiry process is complete.</step>
+				<step>4. Use CManagedBtIf.StartDiscovery() to determine the services each device offers.</step>
+				<step>5. Call method CBtIf.OnDiscoveryComplete() when the discovery process is complete, and then call CManagedBtIf.ReadDiscoveryRecords() to obtain a list of the services.</step>
+				<step>6. Using application-dependent criteria, select a server that provides the desired service.</step>
+			</steps>
+		</procedure>
+		
+		<codeExample>
+			<code language="C#">
+				CManagedBtIf widcomm = new CManagedBtIf();
+				
+				public void StartGetDevices()
+				{
+					widcomm.DeviceResponded += new CManagedBtIf.DeviceRespondedDelegate(widcomm_DeviceResponded);
+					widcomm.InquiryComplete += new CManagedBtIf.InquiryCompleteDelegate(widcomm_InquiryComplete);
+					bool ret = widcomm.StartInquiry();
+					if (ret == false)
+					{
+						widcomm.DeviceResponded -= new CManagedBtIf.DeviceRespondedDelegate(widcomm_DeviceResponded);
+						widcomm.InquiryComplete -= new CManagedBtIf.InquiryCompleteDelegate(widcomm_InquiryComplete);
+					}
+				}
+				
+				void widcomm_DeviceResponded(DeviceAddress bda, DeviceClass devClass, string bdName, bool bConnected)
+				{
+					System.Diagnostics.Debug.Writeline("Device name: " + bdName + ", Device addr: " + bda.ToString() + ", Connected: " + bConnected);
+					System.Diagnostics.Debug.Writeline(devClass.ToString());
+				}
+
+				void widcomm_InquiryComplete(bool success, short num_responses)
+				{
+					widcomm.DeviceResponded -= new CManagedBtIf.DeviceRespondedDelegate(widcomm_DeviceResponded);
+					widcomm.InquiryComplete -= new CManagedBtIf.InquiryCompleteDelegate(widcomm_InquiryComplete);
+				}
+		
+			</code>
+		</codeExample>
+
+	</developerHowToDocument>
+</topic>
+
