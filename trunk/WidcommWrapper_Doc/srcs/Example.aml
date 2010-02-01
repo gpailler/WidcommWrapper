@@ -21,28 +21,27 @@
 		<procedure>
 			<title>Common steps for a typical client application:</title>
 			<steps class="ordered">
-				<step>1. Instantiate an object of CManagedBtIf class.</step>
-				<step>2. Use method CManagedBtIf.StartInquiry() to obtain a list of devices in the Bluetooth neighborhood.</step>
-				<step>3. Use the event CManagedBtIf.DeviceResponded to build a list of responding devices. Another event, CManagedBtIf.InquiryComplete, may optionally be used to determine when the inquiry process is complete.</step>
-				<step>4. Use CManagedBtIf.StartDiscovery() to determine the services each device offers.</step>
-				<step>5. Call method CBtIf.OnDiscoveryComplete() when the discovery process is complete, and then call CManagedBtIf.ReadDiscoveryRecords() to obtain a list of the services.</step>
-				<step>6. Using application-dependent criteria, select a server that provides the desired service.</step>
+				<step>Instantiate an object of <codeEntityReference qualifyHint="true" autoUpgrade="true">T:CG.Wrappers.Widcomm.CManagedBtIf</codeEntityReference> class.</step>
+				<step>Call method <codeEntityReference qualifyHint="false" autoUpgrade="true">M:CG.Wrappers.Widcomm.CManagedBtIf.StartInquiry</codeEntityReference> to obtain a list of devices in the Bluetooth neighborhood.</step>
+				<step>Subscribe the event <codeEntityReference qualifyHint="false" autoUpgrade="true">E:CG.Wrappers.Widcomm.CManagedBtIf.DeviceResponded</codeEntityReference> to build a list of responding devices. Another event, <codeEntityReference qualifyHint="false" autoUpgrade="true">E:CG.Wrappers.Widcomm.CManagedBtIf.InquiryComplete</codeEntityReference>, may optionally be used to determine when the inquiry process is complete.</step>
+				<step>Use <codeEntityReference qualifyHint="false" autoUpgrade="true">M:CG.Wrappers.Widcomm.CManagedBtIf.StartDiscovery(CG.Wrappers.Widcomm.Datatypes.DeviceAddress,CG.Wrappers.Widcomm.Enums.eGuidServiceClass)</codeEntityReference> to determine the services each device offers.</step>
+				<step>Subscribe event <codeEntityReference qualifyHint="false" autoUpgrade="true">E:CG.Wrappers.Widcomm.CManagedBtIf.DiscoveryComplete</codeEntityReference> to be notified when the discovery process is complete, and then call <codeEntityReference qualifyHint="false" autoUpgrade="true">M:CG.Wrappers.Widcomm.CManagedBtIf.ReadDiscoveryRecords(CG.Wrappers.Widcomm.Datatypes.DeviceAddress,System.Int32,CG.Wrappers.Widcomm.CManagedSdpDiscoveryRec[]@,CG.Wrappers.Widcomm.Enums.eGuidServiceClass)</codeEntityReference> to obtain a list of the services.</step>
 			</steps>
 		</procedure>
 		
 		<codeExample>
 			<code language="C#">
-				CManagedBtIf widcomm = new CManagedBtIf();
+				CManagedBtIf _widcomm = new CManagedBtIf();
 				
 				public void StartGetDevices()
 				{
-					widcomm.DeviceResponded += new CManagedBtIf.DeviceRespondedDelegate(widcomm_DeviceResponded);
-					widcomm.InquiryComplete += new CManagedBtIf.InquiryCompleteDelegate(widcomm_InquiryComplete);
-					bool ret = widcomm.StartInquiry();
-					if (ret == false)
+					_widcomm.DeviceResponded += new CManagedBtIf.DeviceRespondedDelegate(widcomm_DeviceResponded);
+					_widcomm.InquiryComplete += new CManagedBtIf.InquiryCompleteDelegate(widcomm_InquiryComplete);
+					bool ret = _widcomm.StartInquiry();
+					if (!ret)
 					{
-						widcomm.DeviceResponded -= new CManagedBtIf.DeviceRespondedDelegate(widcomm_DeviceResponded);
-						widcomm.InquiryComplete -= new CManagedBtIf.InquiryCompleteDelegate(widcomm_InquiryComplete);
+						_widcomm.DeviceResponded -= new CManagedBtIf.DeviceRespondedDelegate(widcomm_DeviceResponded);
+						_widcomm.InquiryComplete -= new CManagedBtIf.InquiryCompleteDelegate(widcomm_InquiryComplete);
 					}
 				}
 				
@@ -54,8 +53,8 @@
 
 				void widcomm_InquiryComplete(bool success, short num_responses)
 				{
-					widcomm.DeviceResponded -= new CManagedBtIf.DeviceRespondedDelegate(widcomm_DeviceResponded);
-					widcomm.InquiryComplete -= new CManagedBtIf.InquiryCompleteDelegate(widcomm_InquiryComplete);
+					_widcomm.DeviceResponded -= new CManagedBtIf.DeviceRespondedDelegate(widcomm_DeviceResponded);
+					_widcomm.InquiryComplete -= new CManagedBtIf.InquiryCompleteDelegate(widcomm_InquiryComplete);
 				}
 		
 			</code>
