@@ -446,7 +446,7 @@ namespace CG
 				::tBT_REM_ASSOC_REC* _recs = new ::tBT_REM_ASSOC_REC[maxAssociations];
 				::DWORD _requiredSize;
 
-				bool ret = _mWidcommStack->ReadCOMPortAssociation(_recs, (::DWORD)maxAssociations, &_requiredSize) != 0;
+				bool ret = _mWidcommStack->ReadCOMPortAssociation(_recs, (::DWORD)(sizeof(tBT_REM_ASSOC_REC) * maxAssociations), &_requiredSize) != 0;
 
 				if (ret)
 				{
@@ -459,10 +459,12 @@ namespace CG
 						listAssociations[i]->mServiceName = gcnew System::String(_recs[i].szServiceName);
 						listAssociations[i]->mComPort = _recs[i].com_port;
 					}
+					requiredMaxAssociations = _requiredSize;
 				}
 				else
 				{
 					listAssociations = nullptr;
+					requiredMaxAssociations = 0;
 				}
 
 				delete[] _recs;

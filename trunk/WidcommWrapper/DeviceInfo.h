@@ -50,8 +50,8 @@ namespace CG
 							Datatypes::DeviceAddress::ConvertFrom(_deviceInfo->bda),
 							Datatypes::DeviceClass::ConvertFrom(_deviceInfo->dev_class),
 							gcnew System::String((const char*)_deviceInfo->bd_name),
-							_deviceInfo->b_connected != 0,
-							_deviceInfo->b_paired != 0
+							_deviceInfo->b_paired != 0,
+							_deviceInfo->b_connected != 0
 							);
 					}
 
