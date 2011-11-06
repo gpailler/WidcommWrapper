@@ -1,11 +1,23 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WidcommWrapper", "WidcommWrapper\WidcommWrapper.vcproj", "{757D0AE3-8641-4054-931F-39F94365AD5E}"
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WidcommWrapper", "WidcommWrapper\WidcommWrapper.vcxproj", "{757D0AE3-8641-4054-931F-39F94365AD5E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WidcommWrapper_Test", "WidcommWrapper_Test\WidcommWrapper_Test.csproj", "{B952D074-D758-4690-87D3-D70902BF4486}"
 EndProject
 Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs09
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = WidcommWrapper\\WidcommWrapper.vcxproj
+		SccProjectName1 = WidcommWrapper
+		SccLocalPath1 = WidcommWrapper
+		SccProjectUniqueName2 = WidcommWrapper_Test\\WidcommWrapper_Test.csproj
+		SccProjectName2 = WidcommWrapper_Test
+		SccLocalPath2 = WidcommWrapper_Test
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
 		Debug|x64 = Debug|x64
