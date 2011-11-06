@@ -379,7 +379,64 @@ namespace CG.Wrappers.Widcomm.Tests
 
 		#endregion
 
-	}
+        #region GroupBox6
+
+        CManagedHeadphoneClient wdHeadphone = null;
+
+        private void btn6_Initialize_Click(object sender, EventArgs e)
+        {
+            if (wdHeadphone == null)
+            {
+                this.wdHeadphone = new CManagedHeadphoneClient();
+                this.wdHeadphone.HeadphoneStatusChanged += wdHeadphone_HeadphoneStatusChanged;
+                Trace.TraceInformation("Headphone client initialized");
+            }
+            else
+            {
+                Trace.TraceInformation("Headphone client already initialized");
+            }
+        }
+
+        private void wdHeadphone_HeadphoneStatusChanged(DeviceAddress bda, DeviceClass deviceClass, string deviceName, int handle, eHeadphoneStatus status)
+        {
+            Trace.TraceInformation("Headphone client status changed => Address: {0} / Name: {1} / Handle: {2} / Status: {3}",
+                bda.ToString(), deviceName, handle, status);
+        }
+
+        private void btn6_Connect_Click(object sender, EventArgs e)
+        {
+            if (this.wdHeadphone == null)
+            {
+                Trace.TraceInformation("Headphone client not initialized");
+                return;
+            }
+
+            if (GetAddress(msk6_Address.Text) == null)
+                return;
+
+            eHeadphoneReturnCode ret = this.wdHeadphone.ConnectHeadphone(GetAddress(msk6_Address.Text), "");
+            Trace.TraceInformation("Connect headphone result: {0}", ret);
+        }
+
+        private void btn6_Disconnect_Click(object sender, EventArgs e)
+        {
+            if (this.wdHeadphone == null)
+            {
+                Trace.TraceInformation("Headphone client not initialized");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(msk6_Handle.Text))
+                return;
+
+            int handle = int.Parse(msk6_Handle.Text);
+            eHeadphoneReturnCode ret = this.wdHeadphone.DisconnectHeadphone(handle);
+            Trace.TraceInformation("Disconnect headphone with handle '{0}' result: {1}", handle, ret);
+        }
+
+        #endregion
+
+    }
 
 
 

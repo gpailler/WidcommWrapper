@@ -2,6 +2,7 @@
 #define _TypesEnums
 
 #include <BtIfDefinitions.h>
+#include <BtIfClasses.h>
 
 using namespace System;
 
@@ -708,14 +709,61 @@ namespace CG
 				};
 
 
+				/// <summary>
+				/// Define return code for Headphone Client functions
+				/// </summary>
+				public enum class eHeadphoneReturnCode
+				{
+					/// <summary>Operation initiated without error.</summary>
+					Success = CHeadphoneClient::SUCCESS,
+					/// <summary>COM server could not be started.</summary>
+					NoBtServer = CHeadphoneClient::NO_BT_SERVER,
+					/// <summary>Attempt to connect before previous connection closed.</summary>
+					AlreadyConnected = CHeadphoneClient::ALREADY_CONNECTED,
+					/// <summary>Attempt to close unopened connection.</summary>
+					NotConnected = CHeadphoneClient::NOT_CONNECTED,
+					/// <summary>Local processor could not allocate memory for open.</summary>
+					NotEnoughMemory = CHeadphoneClient::NOT_ENOUGH_MEMORY,
+					/// <summary>One or more of function parameters are not valid</summary>
+					InvalidParameter = CHeadphoneClient::INVALID_PARAMETER,
+					/// <summary>Any condition other than those here.</summary>
+					UnknownError = CHeadphoneClient::UNKNOWN_ERROR,
+					/// <summary>Invalid license.</summary>
+					LicenseError = CHeadphoneClient::LICENSE_ERROR,
+					/// <summary>Device busy.</summary>
+					DeviceBusy = CHeadphoneClient::DEVICE_BUSY,
+					/// <summary>No SDP record found.</summary>
+					ServiceNotFound = CHeadphoneClient::SERVICE_NOT_FOUND,
+					/// <summary>Local device is disabled or not up.</summary>
+					BtmWrongMode = CHeadphoneClient::BTM_WRONG_MODE
+				};
 
 
-
-
-
-		
+				/// <summary>
+				/// Define connection states for AV
+				/// </summary>
+				public enum class eHeadphoneStatus
+				{
+					/// <summary>Device is connected.</summary>
+					Connected = CHeadphoneClient::HEADPHONE_CONNECTED,
+					/// <summary>Connection closed by local device.</summary>
+					LocalDisconnect = CHeadphoneClient::HEADPHONE_LOCAL_DISCONNECT,
+					/// <summary>Connection closed by remote device.</summary>
+					RemoteDisconnect = CHeadphoneClient::HEADPHONE_REMOTE_DISCONNECT,
+					/// <summary>Device not authorized.</summary>
+					DeviceNotAuthorized = CHeadphoneClient::HEADPHONE_DEVICE_NOT_AUTHORIZED,
+					/// <summary>No audio stream found.</summary>
+					NoStreamFound = CHeadphoneClient::HEADPHONE_NO_STREAM_FOUND,
+					/// <summary>Remote device suspended the stream.</summary>
+					RemoteSuspended = CHeadphoneClient::HEADPHONE_REMOTE_SUSPENDED,
+					/// <summary>Incoming stream.</summary>
+					IncomingStream = CHeadphoneClient::HEADPHONE_INCOMING_STREAM,
+					/// <summary>Streaming data.</summary>
+					Streaming = CHeadphoneClient::HEADPHONE_STREAMING,
+					/// <summary>Streaming stopped.</summary>
+					Stopped = CHeadphoneClient::HEADPHONE_STOPPED
+				};
 			}
-
 		}
 	}
 }
